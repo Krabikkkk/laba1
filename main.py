@@ -3,7 +3,7 @@ class User:
     age = None
     ID = None
 
-    def set_data(self, username, age, ID):
+    def __init__(self, username, age, ID):
         self.username = username
         self.age = age
         self.ID = ID
@@ -14,7 +14,7 @@ class Movie:
     genre = None
     duration = None
 
-    def set_data(self, title, genre, duration):
+    def __init__(self, title, genre, duration):
         self.title = title
         self.genre = genre
         self.duration = duration
@@ -25,7 +25,7 @@ class Subscription:
     start_date = None
     end_date = None
 
-    def set_data(self, type, start_date, end_date):
+    def __init__(self, type, start_date, end_date):
         self.type = type
         self.start_date = start_date
         self.end_date = end_date
@@ -36,7 +36,7 @@ class Genre:
     description = None
     ID = None
 
-    def set_data(self, name, description, ID):
+    def __init__(self, name, description, ID):
         self.name = name
         self.description = description
         self.ID = ID
@@ -47,7 +47,7 @@ class Viewing:
     movie_id = None
     watch_time = None
 
-    def set_data(self, user_id, movie_id, watch_time):
+    def __init__(self, user_id, movie_id, watch_time):
         self.user_id = user_id
         self.movie_id = movie_id
         self.watch_time = watch_time
@@ -58,7 +58,7 @@ class Payment:
     date = None
     status = None
 
-    def set_data(self, amount, date, status):
+    def __init__(self, amount, date, status):
         self.amount = amount
         self.date = date
         self.status = status
@@ -69,7 +69,7 @@ class Review:
     movie_id = None
     rating = None
 
-    def set_data(self, user_id, movie_id, rating):
+    def __init__(self, user_id, movie_id, rating):
         self.user_id = user_id
         self.movie_id = movie_id
         self.rating = rating
@@ -80,7 +80,7 @@ class Director:
     birth_year = None
     ID = None
 
-    def set_data(self, name, birth_year, ID):
+    def __init__(self, name, birth_year, ID):
         self.name = name
         self.birth_year = birth_year
         self.ID = ID
@@ -91,7 +91,7 @@ class Watchlist:
     movie_ids = None
     name = None
 
-    def set_data(self, user_id, movie_ids, name):
+    def __init__(self, user_id, movie_ids, name):
         self.user_id = user_id
         self.movie_ids = movie_ids
         self.name = name
@@ -102,7 +102,7 @@ class Playlist:
     owner_id = None
     movie_ids = None
 
-    def set_data(self, name, owner_id, movie_ids):
+    def __init__(self, name, owner_id, movie_ids):
         self.name = name
         self.owner_id = owner_id
         self.movie_ids = movie_ids
