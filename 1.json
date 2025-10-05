@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "username": "Maksim",
+      "age": 19,
+      "ID": 1
+    }
+  ],
+  "movies": [
+    {
+      "title": "Saw",
+      "genre": "Horror",
+      "duration": 136
+    }
+  ]
+}

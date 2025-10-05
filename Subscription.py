@@ -1,9 +1,9 @@
 class Subscription:
-    type = None
+    type_sub = None
     start_date = None
     end_date = None
 
-    def __init__(self, type, start_date, end_date):
-        self.type = type
+    def __init__(self, type_sub, start_date, end_date):
+        self.type_sub = type_sub
         self.start_date = start_date
         self.end_date = end_date
