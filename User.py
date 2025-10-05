@@ -3,7 +3,7 @@ class User:
     age = None
     ID = None
 
-    def set_data(self, username, age, ID):
+    def __init__(self, username, age, ID):
         self.username = username
         self.age = age
         self.ID = ID
