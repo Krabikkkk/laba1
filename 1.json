@@ -1,5 +1,5 @@
 {
-  "users": [
+  "user": [
     {
       "username": "Maksim",
       "age": 19,
@@ -11,6 +11,11 @@
       "title": "Saw",
       "genre": "Horror",
       "duration": 136
+    },
+    {
+      "title": "hammer",
+      "genre": "triller",
+      "duration": 120
     }
-  ]
+    ]
 }
