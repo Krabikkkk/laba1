@@ -1,18 +1,12 @@
 import json
+from os import remove
 
 from movie import Movie
 from user import User
+from cinema import Cinema
 
-
-with open("1.json", "r", encoding= "UTF-8") as file:
-    data = json.load(file)
-    movies_data = data.get("movies", [])
-    movies = []
-    for movie_value in movies_data:
-        movie_obj = Movie(
-            title=movie_value["title"],
-            genre=movie_value["genre"],
-            duration=movie_value["duration"]
-        )
-        movies.append(movie_obj)
-
+cinema = Cinema()
+cinema.load_json_file("1.json")
+cinema = cinema.delete_obj_of_cinema("movies", 0)
+for movie in cinema.movies:
+    print(movie.title)
