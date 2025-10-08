@@ -153,7 +153,7 @@ class Cinema:
     def delete_obj_of_cinema(self, section, num_of_section):
         section_delete = getattr(self, section)
         section_delete.pop(num_of_section)
-        return self
 
     def change_obj_of_cinema(self, section, num_of_section, object_data, new_object_data):
-        pass
+        section_change = getattr(self, section)
+        setattr(section_change[num_of_section], object_data, new_object_data)
