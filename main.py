@@ -1,13 +1,20 @@
 import json
-from os import remove
-
-from movie import Movie
 from user import User
-from cinema import Cinema
 
-cinema = Cinema()
-cinema.load_json_file("1.json")
-cinema.delete_obj_of_cinema("movies", 0)
-cinema.change_obj_of_cinema("movies", 1, "title", "Hulk")
-for movie in cinema.movies:
-    print(movie.title)
+
+def load_to_json(file):
+    with open(file, 'r', encoding='UTF-8') as f:
+        data = json.load(f)
+    return data
+
+users = []
+
+data = load_to_json('1.json')
+users = User.load_users(data["users"])
+
+users[0].change_username(input())
+
+# users.append(User('Krabik', 12, 13))
+# users.append(User('Cat', 17, 122))
+for user in users:
+    print(user.username)

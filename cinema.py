@@ -13,7 +13,6 @@ import json
 
 class Cinema:
 
-
     def __init__(self):
         self.users = []
         self.movies = []
@@ -76,15 +75,15 @@ class Cinema:
         self.watchlists.append(watchlist)
         return watchlist
 
-    def load_json_file(self, data):
+    def load_json_file(self, file):
         with open("1.json", "r", encoding="UTF-8") as file:
             data = json.load(file)
 
             for user_data in data.get("users", []):
                 self.create_user(
-                    username = user_data["username"],
+                    username=user_data["username"],
                     age=user_data["age"],
-                    ID = user_data["ID"]
+                    ID=user_data["ID"]
                 )
 
             for movie_data in data.get("movies", []):
@@ -149,7 +148,6 @@ class Cinema:
                     name=watchlist_data["name"]
                 )
 
-
     def delete_obj_of_cinema(self, section, num_of_section):
         section_delete = getattr(self, section)
         section_delete.pop(num_of_section)
@@ -157,3 +155,17 @@ class Cinema:
     def change_obj_of_cinema(self, section, num_of_section, object_data, new_object_data):
         section_change = getattr(self, section)
         setattr(section_change[num_of_section], object_data, new_object_data)
+
+    def save_to_json(self, file):
+        sections = [
+            "users", "movies", "genres", "payments", "reviews", "subscriptions", "viewings",
+            "watch_histories", "watchlists", "collections"
+        ]
+
+        data = {}
+        for section in sections:
+            obj_list = getattr(self, section)
+            data[section] = [obj.__dict__ for obj in obj_list]
+
+        with open(file, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
