@@ -7,12 +7,15 @@ def load_to_json(file):
         data = json.load(f)
     return data
 
+
+
 users = []
 
-data = load_to_json('1.json')
-users = User.load_users(data["users"])
+# data_json = load_to_json('data.json')
+# users = User.load_users_json(data_json["users"])
+users = User.load_users_xml('data.xml')
 
-users[0].change_username(input())
+
 
 # users.append(User('Krabik', 12, 13))
 # users.append(User('Cat', 17, 122))

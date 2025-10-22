@@ -76,7 +76,7 @@ class Cinema:
         return watchlist
 
     def load_json_file(self, file):
-        with open("1.json", "r", encoding="UTF-8") as file:
+        with open("data.json", "r", encoding="UTF-8") as file:
             data = json.load(file)
 
             for user_data in data.get("users", []):

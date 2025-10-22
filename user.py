@@ -1,4 +1,4 @@
-import json
+import xml.etree.ElementTree as ET
 
 
 class User:
@@ -12,12 +12,27 @@ class User:
         self.ID = ID
 
     @classmethod
-    def load_users(cls, data) -> list["User"]:
+    def load_users_json(cls, data) -> list["User"]:
         users = []
         for user_data in data:
             user = cls(user_data["username"], user_data["age"], user_data["ID"])
             users.append(user)
         return users
+
+    @classmethod
+    def load_users_xml(cls, file)  -> list["User"]:
+        users = []
+        with open(file, 'r', encoding='UTF-8') as f:
+            tree = ET.parse(f)
+            data = tree.getroot()
+            for user in data.findall("user"):
+                username = user.find("username").text
+                age = int(user.find("age").text)
+                ID = int(user.find("ID").text)
+                user_obj = cls(username, age, ID)
+                users.append(user_obj)
+        return users
+
 
     @classmethod
     def delete_user(cls,users, ID_delete) -> int:
@@ -36,5 +51,4 @@ class User:
     def change_age(self, value):
         self.age = int(value)
 
-    def save_to_json(self):
-        pass
+
