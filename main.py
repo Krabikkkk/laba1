@@ -26,6 +26,5 @@ except ValueError as error:
     print(error)
 
 
-
 # users.append(User('Krabik', 12, 13))
 # users.append(User('Cat', 17, 122))
