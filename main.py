@@ -17,13 +17,16 @@ def load_to_json(file):
 
 users = []
 
-# data_json = load_to_json('data.json')
-# users = User.load_users_json(data_json["users"])
+# data = load_to_json('data.json')
+# users = User.load_users_json(data["users"])
 users = User.load_users_xml('data.xml')
 try:
     users.append(User("Bob", 12, 100))
 except ValueError as error:
     print(error)
+User.delete_user(users, 3)
+for i, user in enumerate(users):
+    print(i, user)
 
 
 # users.append(User('Krabik', 12, 13))

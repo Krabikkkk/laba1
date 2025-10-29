@@ -1,7 +1,9 @@
 class Payment:
+    user_ID = None
     amount = None
     date = None
     status = None
+
 
     def __init__(self, amount, date, status):
         self.amount = amount

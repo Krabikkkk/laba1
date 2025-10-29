@@ -2,8 +2,12 @@ import xml.etree.ElementTree as ET
 
 
 
-def check_username(username):
+def check_username(username, num_of_user=None):
     if username is None or username == "" or not isinstance(username, str):
+        if num_of_user is not None:
+            print(f"имя пользователя {num_of_user} неверное")
+        else:
+            print("неверное имя пользователя")
         return False
     return True
 
@@ -25,9 +29,9 @@ def check_age(age, num_of_user=None):
         return False, None
     if not (6 <= age <= 100):
         if num_of_user is not None:
-            print(f"возраст пользователя {num_of_user} должен быть от 6 до 100")
+            print(f"возраст пользователя {num_of_user} должен быть от 6 до 100, ваш возраст - {age}")
         else:
-            print("возраст должен быть от 6 до 100")
+            print(f"возраст должен быть от 6 до 100, ваш возраст - {age}")
         return False, None
     return True, age
 
@@ -48,9 +52,9 @@ def check_ID(ID, num_of_user=None):
         return False, None
     if not (ID_int > 0):
         if num_of_user is not None:
-            print(f"ID пользователя {num_of_user} должен быть больше 0")
+            print(f"ID пользователя {num_of_user} должен быть больше 0, ваш ID {ID}")
         else:
-            print("ID должен быть больше 0")
+            print(f"ID должен быть больше 0, ваш ID {ID}")
         return False, None
     return True, ID_int
 
@@ -62,12 +66,14 @@ class User:
     ID: int
 
     def __init__(self, username:str, age:int, ID:int):
-        if not username or not isinstance(username, str):
-            raise ValueError("Имя пользователя должно быть непустой строкой")
-        if not isinstance(age, int) or age < 6 or age > 100:
-            raise ValueError("Возраст должен быть целым числом от 6 до 100")
-        if not isinstance(ID, int) or ID <= 0:
-            raise ValueError("ID должен быть положительным целым числом")
+        if not check_username(username):
+            raise ValueError
+        is_valid, age = check_age(age)
+        if not is_valid:
+            raise ValueError
+        is_valid, ID = check_ID(ID)
+        if not is_valid:
+            raise ValueError
 
         self.username = username
         self.age = age
@@ -79,11 +85,11 @@ class User:
     @classmethod
     def load_users_json(cls, data) -> list["User"]:
         users = []
-        num_of_user = 1
+        num_of_user = 0
         for user_data in data:
+            num_of_user += 1
             username = user_data.get("username")
-            if not check_username(username):
-                print(f"Имя пользователя {num_of_user} должно быть непустой строкой")
+            if not check_username(username, num_of_user):
                 continue
             age = user_data.get("age")
             is_valid, age =  check_age(age, num_of_user)
@@ -97,9 +103,9 @@ class User:
             try:
                 user = cls(username, age, ID)
                 users.append(user)
+
             except ValueError as error:
                 print(f"ошибка при создании {num_of_user} пользователя {error}")
-            num_of_user+=1
         return users
 
     @classmethod
@@ -161,11 +167,13 @@ class User:
         is_valid, ID_delete = check_ID(ID_delete)
         if not is_valid:
             return
-        for user in users:
+        for i, user in enumerate(users):
             if user.ID == ID_delete:
+                users.pop(i)
                 print(f"Пользователь с ID - {user.ID} удален")
                 return
         print(f"Пользователя с {ID_delete} ID не существует")
+        return
 
     def change_username(self, username:str):
         if not check_username(username):
@@ -180,4 +188,8 @@ class User:
         self.age = int(age)
         return
 
+
+
+    def __str__(self):
+        return f"{self.username}, {self.age}"
 
