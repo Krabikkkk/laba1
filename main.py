@@ -1,5 +1,7 @@
 import json
 from user import User
+from movie import Movie
+from genre import Genre
 
 
 def load_to_json(file):
@@ -9,25 +11,44 @@ def load_to_json(file):
         return data
     except FileNotFoundError:
         print("файл не найден")
-        return {"users": []}
+        return {"data": []}
     except json.JSONDecodeError:
         print("файл поврежден или не является валидным")
-        return {"users": []}
+        return {"data": []}
 
 
-users = []
+users, movies, genres = [], [], []
+data = load_to_json('data.json')
+users = User.load_users_json(data["users"])
+movies = Movie.load_movies_xml("data.xml")
+genres = Genre.load_genres_xml("data.xml")
 
-# data = load_to_json('data.json')
-# users = User.load_users_json(data["users"])
-users = User.load_users_xml('data.xml')
+
+
+
+
+
+
+
+
+
+
 try:
     users.append(User("Bob", 12, 100))
 except ValueError as error:
     print(error)
+try:
+    movies.append(Movie("Halk", "hz", 121, 110))
+except ValueError as error:
+    print(error)
 User.delete_user(users, 3)
-for i, user in enumerate(users):
-    print(i, user)
+
+for  user in users:
+    print(user)
+
+for movie in movies:
+    print(movie)
 
 
-# users.append(User('Krabik', 12, 13))
-# users.append(User('Cat', 17, 122))
+for genre in genres:
+    print(genre)

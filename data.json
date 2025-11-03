@@ -20,22 +20,20 @@
     {
       "title": "The Matrix",
       "genre": "action",
-      "duration": 136
+      "duration": 136,
+      "ID": 101
     },
     {
       "title": "Interstellar",
       "genre": "sci-fi",
-      "duration": 169
+      "duration": 169,
+      "ID": 102
     },
     {
       "title": "The Shawshank Redemption",
       "genre": "drama",
-      "duration": 142
-    },
-    {
-      "title": "2",
-      "genre": "",
-      "duration": ""
+      "duration": 142,
+      "ID": 103
     }
   ],
   "genres": [
@@ -46,151 +44,12 @@
     },
     {
       "name": "Sci-Fi",
-      "description": "Science fiction stories",
+      "description": "Futuristic and imaginative",
       "ID": 2
     },
     {
       "name": "Drama",
-      "description": "Serious and emotional",
-      "ID": 3
-    }
-  ],
-  "payments": [
-    {
-      "amount": 499,
-      "date": "2025-04-05",
-      "status": "success"
-    },
-    {
-      "amount": 299,
-      "date": "2025-03-10",
-      "status": "success"
-    },
-    {
-      "amount": 499,
-      "date": "2025-02-15",
-      "status": "failed"
-    }
-  ],
-  "reviews": [
-    {
-      "user_id": 1,
-      "movie_id": 1,
-      "rating": 5
-    },
-    {
-      "user_id": 2,
-      "movie_id": 2,
-      "rating": 4
-    },
-    {
-      "user_id": 3,
-      "movie_id": 3,
-      "rating": 5
-    }
-  ],
-  "subscriptions": [
-    {
-      "type_sub": "premium",
-      "start_date": "2025-01-01",
-      "end_date": "2025-12-31"
-    },
-    {
-      "type_sub": "basic",
-      "start_date": "2025-02-01",
-      "end_date": "2025-07-31"
-    },
-    {
-      "type_sub": "premium",
-      "start_date": "2025-03-01",
-      "end_date": "2026-02-28"
-    }
-  ],
-  "viewings": [
-    {
-      "user_id": 1,
-      "movie_id": 1,
-      "watch_time": "2025-04-05T20:30"
-    },
-    {
-      "user_id": 2,
-      "movie_id": 2,
-      "watch_time": "2025-04-04T19:15"
-    },
-    {
-      "user_id": 3,
-      "movie_id": 3,
-      "watch_time": "2025-04-03T21:00"
-    }
-  ],
-  "watch_histories": [
-    {
-      "name": "Alice History",
-      "movie_ids": [
-        1,
-        2
-      ]
-    },
-    {
-      "name": "Bob History",
-      "movie_ids": [
-        2
-      ]
-    },
-    {
-      "name": "Vera History",
-      "movie_ids": [
-        3,
-        1
-      ]
-    }
-  ],
-  "watchlists": [
-    {
-      "user_id": 1,
-      "movie_ids": [
-        2,
-        3
-      ],
-      "name": "Watch Later"
-    },
-    {
-      "user_id": 2,
-      "movie_ids": [
-        1,
-        3
-      ],
-      "name": "Top Picks"
-    },
-    {
-      "user_id": 3,
-      "movie_ids": [
-        1
-      ],
-      "name": "Must See"
-    }
-  ],
-  "collections": [
-    {
-      "name": "Favorites",
-      "films": [
-        1,
-        2
-      ],
-      "ID": 1
-    },
-    {
-      "name": "Sci-Fi",
-      "films": [
-        2
-      ],
-      "ID": 2
-    },
-    {
-      "name": "Classics",
-      "films": [
-        3
-      ],
+      "description": "Serious and emotional stories",
       "ID": 3
     }
   ]

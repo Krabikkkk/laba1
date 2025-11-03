@@ -1,4 +1,4 @@
-<users>
+<root>
   <user>
     <username>Alice</username>
     <age>25</age>
@@ -14,4 +14,39 @@
     <age>22</age>
     <ID>3</ID>
   </user>
-</users>
+
+  <movie>
+    <title>The Matrix</title>
+    <genre>action</genre>
+    <duration>136</duration>
+    <ID>101</ID>
+  </movie>
+  <movie>
+    <title>Interstellar</title>
+    <genre>sci-fi</genre>
+    <duration>169</duration>
+    <ID>102</ID>
+  </movie>
+  <movie>
+    <title>The Shawshank Redemption</title>
+    <genre>drama</genre>
+    <duration>142</duration>
+    <ID>103</ID>
+  </movie>
+
+  <genre>
+    <name>Action</name>
+    <description>Fast-paced and exciting</description>
+    <ID>1</ID>
+  </genre>
+  <genre>
+    <name>Sci-Fi</name>
+    <description>Futuristic and imaginative</description>
+    <ID>2</ID>
+  </genre>
+  <genre>
+    <name>Drama</name>
+    <description>Serious and emotional stories</description>
+    <ID>3</ID>
+  </genre>
+</root>

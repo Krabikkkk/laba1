@@ -191,5 +191,5 @@ class User:
 
 
     def __str__(self):
-        return f"{self.username}, {self.age}"
+        return f"Имя - {self.username}, возраст -  {self.age}, ID - {self.ID}"
 

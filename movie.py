@@ -116,13 +116,11 @@ class Movie:
                 tree = ET.parse(f)
                 root = tree.getroot()
                 for i, elem in enumerate(root.findall("movie"), 1):
-                    # Получаем текст из тегов (может быть None)
                     title = elem.find("title").text if elem.find("title") is not None else None
                     genre = elem.find("genre").text if elem.find("genre") is not None else None
                     duration = elem.find("duration").text if elem.find("duration") is not None else None
                     ID = elem.find("ID").text if elem.find("ID") is not None else None
 
-                    # Валидация — ТОЧНО как в JSON!
                     if not check_movie_title(title, i):
                         continue
                     if not check_movie_genre(genre, i):
@@ -148,4 +146,4 @@ class Movie:
         return movies
 
     def __str__(self):
-        return f"{self.title} ({self.genre}, {self.duration} мин)"
+        return f"{self.title} ({self.genre}, {self.duration} мин), {self.ID} - ID"
