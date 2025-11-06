@@ -44,7 +44,7 @@ class WatchHistory:
             raise InvalidWatchHistoryError("ID фильма должен быть положительным целым числом")
         self.movie_ids.append(movie_id)
         if len(self.movie_ids) > self.MAX_HISTORY:
-            self.movie_ids.pop(0)  # Удаляем самый старый
+            self.movie_ids.pop(0)
 
     def __str__(self):
         return f"История пользователя {self.user_id}: последние {len(self.movie_ids)} фильмов"

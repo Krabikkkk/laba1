@@ -1,18 +1,13 @@
-<root>
+<cinema>
   <user>
     <username>Alice</username>
     <age>25</age>
     <ID>1</ID>
   </user>
   <user>
-    <username>Steve</username>
+    <username>Bob</username>
     <age>30</age>
     <ID>2</ID>
-  </user>
-  <user>
-    <username>Vera</username>
-    <age>22</age>
-    <ID>3</ID>
   </user>
 
   <movie>
@@ -27,12 +22,6 @@
     <duration>169</duration>
     <ID>102</ID>
   </movie>
-  <movie>
-    <title>The Shawshank Redemption</title>
-    <genre>drama</genre>
-    <duration>142</duration>
-    <ID>103</ID>
-  </movie>
 
   <genre>
     <name>Action</name>
@@ -41,12 +30,103 @@
   </genre>
   <genre>
     <name>Sci-Fi</name>
-    <description>Futuristic and imaginative</description>
+    <description>Futuristic stories</description>
     <ID>2</ID>
   </genre>
-  <genre>
-    <name>Drama</name>
-    <description>Serious and emotional stories</description>
-    <ID>3</ID>
-  </genre>
-</root>
+
+  <payment>
+    <user_ID>1</user_ID>
+    <amount>499.0</amount>
+    <date>2025-01-15</date>
+    <status>успешно</status>
+  </payment>
+  <payment>
+    <user_ID>2</user_ID>
+    <amount>299.0</amount>
+    <date>2025-02-20</date>
+    <status>ожидает</status>
+  </payment>
+
+  <review>
+    <user_id>1</user_id>
+    <movie_id>101</movie_id>
+    <rating>9.5</rating>
+  </review>
+  <review>
+    <user_id>2</user_id>
+    <movie_id>102</movie_id>
+    <rating>8.0</rating>
+  </review>
+
+  <subscription>
+    <type_sub>premium</type_sub>
+    <start_date>2025-01-01</start_date>
+    <end_date>2025-12-31</end_date>
+    <user_ID>1</user_ID>
+  </subscription>
+  <subscription>
+    <type_sub>basic</type_sub>
+    <start_date>2025-02-01</start_date>
+    <end_date>2025-07-31</end_date>
+    <user_ID>2</user_ID>
+  </subscription>
+
+  <viewing>
+    <user_id>1</user_id>
+    <movie_id>101</movie_id>
+    <watch_time>01:23:45</watch_time>
+  </viewing>
+  <viewing>
+    <user_id>2</user_id>
+    <movie_id>102</movie_id>
+    <watch_time>00:45:20</watch_time>
+  </viewing>
+
+  <watchlist>
+    <user_id>1</user_id>
+    <name>Посмотреть позже</name>
+    <movie_ids>
+      <movie_id>102</movie_id>
+      <movie_id>103</movie_id>
+    </movie_ids>
+  </watchlist>
+  <watchlist>
+    <user_id>2</user_id>
+    <name>Любимые</name>
+    <movie_ids>
+      <movie_id>101</movie_id>
+    </movie_ids>
+  </watchlist>
+
+  <watch_history>
+    <user_id>1</user_id>
+    <movie_ids>
+      <movie_id>101</movie_id>
+      <movie_id>104</movie_id>
+    </movie_ids>
+  </watch_history>
+  <watch_history>
+    <user_id>2</user_id>
+    <movie_ids>
+      <movie_id>102</movie_id>
+    </movie_ids>
+  </watch_history>
+
+  <collection>
+    <ID>1</ID>
+    <name>Новинки апреля</name>
+    <movie_ids>
+      <movie_id>101</movie_id>
+      <movie_id>102</movie_id>
+    </movie_ids>
+  </collection>
+  <collection>
+    <ID>2</ID>
+    <name>Топ-10 2025</name>
+    <movie_ids>
+      <movie_id>103</movie_id>
+      <movie_id>104</movie_id>
+      <movie_id>105</movie_id>
+    </movie_ids>
+  </collection>
+</cinema>
