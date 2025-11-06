@@ -4,51 +4,60 @@ from movie import Movie
 from genre import Genre
 
 
-def load_to_json(file):
+def delete_user_by_id(users: list[User], user_id: int) -> bool:
+    for i, user in enumerate(users):
+        if user.ID == user_id:
+            users.pop(i)
+            print(f"Пользователь с ID {user_id} удалён")
+            return True
+    print(f"Пользователь с ID {user_id} не найден")
+    return False
+def load_data_from_json(filename: str):
     try:
-        with open(file, 'r', encoding='UTF-8') as f:
+        with open(filename, "r", encoding="utf-8") as f:
             data = json.load(f)
-        return data
     except FileNotFoundError:
-        print("файл не найден")
-        return {"data": []}
+        print(f"Файл {filename} не найден. Создаём пустые данные.")
+        return [], [], []
     except json.JSONDecodeError:
-        print("файл поврежден или не является валидным")
-        return {"data": []}
+        print(f"Файл {filename} повреждён.")
+        return [], [], []
 
+    users = []
+    for i, user_data in enumerate(data.get("users", []), 1):
+        try:
+            user = User(
+                username=user_data["username"],
+                age=user_data["age"],
+                ID=user_data["ID"]
+            )
+            users.append(user)
+        except Exception as e:
+            print(f"Ошибка при создании пользователя {i}: {e}")
 
-users, movies, genres = [], [], []
-data = load_to_json('data.json')
-users = User.load_users_json(data["users"])
-movies = Movie.load_movies_xml("data.xml")
-genres = Genre.load_genres_xml("data.xml")
+    movies = []
+    for i, movie_data in enumerate(data.get("movies", []), 1):
+        try:
+            movie = Movie(
+                title=movie_data["title"],
+                genre=movie_data["genre"],
+                duration=movie_data["duration"],
+                ID=movie_data["ID"]
+            )
+            movies.append(movie)
+        except Exception as e:
+            print(f"Ошибка при создании фильма {i}: {e}")
 
+    genres = []
+    for i, genre_data in enumerate(data.get("genres", []), 1):
+        try:
+            genre = Genre(
+                name=genre_data["name"],
+                description=genre_data.get("description"),  # может отсутствовать
+                ID=genre_data["ID"]
+            )
+            genres.append(genre)
+        except Exception as e:
+            print(f"Ошибка при создании жанра {i}: {e}")
 
-
-
-
-
-
-
-
-
-
-try:
-    users.append(User("Bob", 12, 100))
-except ValueError as error:
-    print(error)
-try:
-    movies.append(Movie("Halk", "hz", 121, 110))
-except ValueError as error:
-    print(error)
-User.delete_user(users, 3)
-
-for  user in users:
-    print(user)
-
-for movie in movies:
-    print(movie)
-
-
-for genre in genres:
-    print(genre)
+    return users, movies, genres
