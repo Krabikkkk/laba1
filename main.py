@@ -396,6 +396,14 @@ def delete_movie_from_watchlist(watchlists, user_id, movie_id):
                 return True
     return False
 
+def remove_movie_from_watchlist(watchlists, user_id, movie_id):
+    for watchlist in watchlists:
+        if watchlist.user_id == user_id:
+            if movie_id in watchlist.movie_ids:
+                watchlist.movie_ids.remove(movie_id)
+                return True
+    return False
+
 
 if __name__ == '__main__':
     #users, movies, genres, payments, reviews, subscriptions, viewings, watchlists, watch_histories, collections = load_data_from_xml("test_data.xml")

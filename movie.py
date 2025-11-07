@@ -46,7 +46,7 @@ class Movie:
         self.title = self.check_movie_title(title)
         self.genre = self.check_movie_genre(genre)
         self.duration = self.check_movie_duration(duration)
-        self.ID = self.check_movie_id(ID)
+        self.ID = self. check_movie_id(ID)
 
     def __str__(self):
         return f"{self.title} ({self.genre}, {self.duration} мин), ID - {self.ID}"

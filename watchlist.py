@@ -2,8 +2,9 @@ from exceptions import InvalidWatchlistError
 
 
 class Watchlist:
+    MAX_MOVIES = 50
 
-    def check_watchlist_user_id(user_id):
+    def check_user_id(self, user_id):
         if user_id is None:
             raise InvalidWatchlistError("ID пользователя не указан")
         try:
@@ -14,13 +15,13 @@ class Watchlist:
             raise InvalidWatchlistError(f"ID пользователя должен быть положительным. Получено: {user_id}")
         return user_id
 
-    def check_watchlist_movie_ids(movie_ids):
+    def check_movie_ids(self, movie_ids):
         if movie_ids is None:
-            raise InvalidWatchlistError("Список фильмов не указан")
+            return []
         if not isinstance(movie_ids, list):
             raise InvalidWatchlistError("Список фильмов должен быть типом list")
-        if len(movie_ids) > 20:
-            raise InvalidWatchlistError(f"Максимум 20 фильмов в списке. Передано: {len(movie_ids)}")
+        if len(movie_ids) > self.MAX_MOVIES:
+            raise InvalidWatchlistError(f"Максимум {self.MAX_MOVIES} фильмов в списке. Передано: {len(movie_ids)}")
         valid_ids = []
         for i, mid in enumerate(movie_ids):
             try:
@@ -32,19 +33,28 @@ class Watchlist:
             valid_ids.append(mid)
         return valid_ids
 
-    def check_watchlist_name(name):
+    def check_name(self, name):
         if name is None:
-            raise InvalidWatchlistError("Название списка не указано")
+            return "Список к просмотру"
         if not isinstance(name, str):
             raise InvalidWatchlistError("Название списка должно быть строкой")
         if name.strip() == "":
-            raise InvalidWatchlistError("Название списка не может быть пустым")
+            return "Список к просмотру"
         return name.strip()
 
-    def __init__(self, user_id: int, movie_ids: list[int], name: str):
-        self.user_id = self.check_watchlist_user_id(user_id)
-        self.movie_ids = self.check_watchlist_movie_ids(movie_ids)
-        self.name = self.check_watchlist_name(name)
+    def __init__(self, user_id: int, movie_ids: list[int] = None, name: str = None):
+        self.user_id = self.check_user_id(user_id)
+        self.movie_ids = self.check_movie_ids(movie_ids)
+        self.name = self.check_name(name)
+
+    def add_movie(self, movie_id: int):
+        if not isinstance(movie_id, int) or movie_id <= 0:
+            raise InvalidWatchlistError("ID фильма должен быть положительным целым числом")
+        if movie_id in self.movie_ids:
+            raise InvalidWatchlistError("Фильм уже есть в списке")
+        if len(self.movie_ids) >= self.MAX_MOVIES:
+            raise InvalidWatchlistError(f"Достигнут лимит фильмов в списке ({self.MAX_MOVIES})")
+        self.movie_ids.append(movie_id)
 
     def __str__(self):
         return f"Список '{self.name}' пользователя {self.user_id}: {len(self.movie_ids)} фильмов"
