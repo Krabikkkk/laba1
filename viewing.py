@@ -3,6 +3,7 @@ from exceptions import InvalidViewingError
 
 class Viewing:
 
+    @staticmethod
     def check_viewing_user_id(user_id):
         if user_id is None:
             raise InvalidViewingError("ID пользователя не указан")
@@ -14,6 +15,7 @@ class Viewing:
             raise InvalidViewingError(f"ID пользователя должен быть положительным. Получено: {user_id}")
         return user_id
 
+    @staticmethod
     def check_viewing_movie_id(movie_id):
         if movie_id is None:
             raise InvalidViewingError("ID фильма не указан")
@@ -25,6 +27,7 @@ class Viewing:
             raise InvalidViewingError(f"ID фильма должен быть положительным. Получено: {movie_id}")
         return movie_id
 
+    @staticmethod
     def check_viewing_watch_time(watch_time):
         if watch_time is None:
             raise InvalidViewingError("Время просмотра не указано")

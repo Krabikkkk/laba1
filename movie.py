@@ -2,6 +2,7 @@ from exceptions import InvalidMovieError
 
 class Movie:
 
+    @staticmethod
     def check_movie_title(title):
         if title is None:
             raise InvalidMovieError("Название фильма не может быть None")
@@ -11,6 +12,7 @@ class Movie:
             raise InvalidMovieError("Название фильма не может быть пустым")
         return title.strip()
 
+    @staticmethod
     def check_movie_genre(genre):
         if genre is None:
             raise InvalidMovieError("Жанр фильма не может быть None")
@@ -20,6 +22,7 @@ class Movie:
             raise InvalidMovieError("Жанр фильма не может быть пустым")
         return genre.strip()
 
+    @staticmethod
     def check_movie_duration(duration):
         if duration is None:
             raise InvalidMovieError("Длительность фильма не указана")
@@ -31,6 +34,7 @@ class Movie:
             raise InvalidMovieError(f"Длительность фильма должна быть положительной. Получено: {duration} мин")
         return duration
 
+    @staticmethod
     def check_movie_id(movie_id):
         if movie_id is None:
             raise InvalidMovieError("ID фильма не указан")

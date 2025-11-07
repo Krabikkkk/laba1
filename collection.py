@@ -1,7 +1,7 @@
 from exceptions import InvalidCollectionError
 
 class Collection:
-
+    @staticmethod
     def check_collection_id(collection_id):
         if collection_id is None:
             raise InvalidCollectionError("ID подборки не указан")
@@ -13,6 +13,7 @@ class Collection:
             raise InvalidCollectionError(f"ID подборки должен быть положительным. Получено: {collection_id}")
         return collection_id
 
+    @staticmethod
     def check_collection_name(name):
         if name is None:
             raise InvalidCollectionError("Название подборки не указано")
@@ -22,6 +23,7 @@ class Collection:
             raise InvalidCollectionError("Название подборки не может быть пустым")
         return name.strip()
 
+    @staticmethod
     def check_collection_movie_ids(movie_ids):
         if movie_ids is None:
             raise InvalidCollectionError("Список фильмов не указан")

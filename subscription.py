@@ -3,6 +3,7 @@ from exceptions import InvalidSubscriptionError
 
 class Subscription:
 
+    @staticmethod
     def check_subscription_user_id(user_id):
         if user_id is None:
             raise InvalidSubscriptionError("ID пользователя не указан")
@@ -14,6 +15,7 @@ class Subscription:
             raise InvalidSubscriptionError(f"ID пользователя должен быть положительным. Получено: {user_id}")
         return user_id
 
+    @staticmethod
     def check_subscription_type(type_sub):
         if type_sub is None:
             raise InvalidSubscriptionError("Тип подписки не указан")
@@ -27,6 +29,7 @@ class Subscription:
             )
         return type_sub.strip().lower()
 
+    @staticmethod
     def check_subscription_date(date, field_name="дата"):
         if date is None:
             raise InvalidSubscriptionError(f"{field_name.capitalize()} не указана")

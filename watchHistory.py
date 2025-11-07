@@ -4,7 +4,8 @@ from exceptions import InvalidWatchHistoryError
 class WatchHistory:
     MAX_HISTORY = 10
 
-    def check_user_id(self, user_id):
+    @staticmethod
+    def check_user_id(user_id):
         if user_id is None:
             raise InvalidWatchHistoryError("ID пользователя не указан")
         try:
@@ -15,7 +16,8 @@ class WatchHistory:
             raise InvalidWatchHistoryError(f"ID пользователя должен быть положительным. Получено: {user_id}")
         return user_id
 
-    def check_movie_ids(self, movie_ids):
+    @staticmethod
+    def check_movie_ids(movie_ids):
         if movie_ids is None:
             return []
         if not isinstance(movie_ids, list):
@@ -29,7 +31,7 @@ class WatchHistory:
             if mid <= 0:
                 raise InvalidWatchHistoryError(f"ID фильма на позиции {i + 1} должен быть положительным. Получено: {mid}")
             valid_ids.append(mid)
-        return valid_ids[-self.MAX_HISTORY:]
+        return valid_ids[-WatchHistory.MAX_HISTORY:]
 
     def __init__(self, user_id: int, movie_ids: list[int] = None):
         self.user_id = self.check_user_id(user_id)

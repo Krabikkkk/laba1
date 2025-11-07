@@ -4,7 +4,8 @@ from exceptions import InvalidWatchlistError
 class Watchlist:
     MAX_MOVIES = 50
 
-    def check_user_id(self, user_id):
+    @staticmethod
+    def check_user_id(user_id):
         if user_id is None:
             raise InvalidWatchlistError("ID пользователя не указан")
         try:
@@ -15,13 +16,14 @@ class Watchlist:
             raise InvalidWatchlistError(f"ID пользователя должен быть положительным. Получено: {user_id}")
         return user_id
 
-    def check_movie_ids(self, movie_ids):
+    @staticmethod
+    def check_movie_ids(movie_ids):
         if movie_ids is None:
             return []
         if not isinstance(movie_ids, list):
             raise InvalidWatchlistError("Список фильмов должен быть типом list")
-        if len(movie_ids) > self.MAX_MOVIES:
-            raise InvalidWatchlistError(f"Максимум {self.MAX_MOVIES} фильмов в списке. Передано: {len(movie_ids)}")
+        if len(movie_ids) > Watchlist.MAX_MOVIES:
+            raise InvalidWatchlistError(f"Максимум {Watchlist.MAX_MOVIES} фильмов в списке. Передано: {len(movie_ids)}")
         valid_ids = []
         for i, mid in enumerate(movie_ids):
             try:
@@ -33,7 +35,8 @@ class Watchlist:
             valid_ids.append(mid)
         return valid_ids
 
-    def check_name(self, name):
+    @staticmethod
+    def check_name(name):
         if name is None:
             return "Список к просмотру"
         if not isinstance(name, str):

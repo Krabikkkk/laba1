@@ -2,6 +2,7 @@ from exceptions import InvalidGenreError
 
 class Genre:
 
+    @staticmethod
     def check_genre_name(name):
         if name is None:
             raise InvalidGenreError("Название жанра не может быть None")
@@ -11,6 +12,7 @@ class Genre:
             raise InvalidGenreError("Название жанра не может быть пустым")
         return name.strip()
 
+    @staticmethod
     def check_genre_description(description):
         if description is None:
             return None
@@ -20,6 +22,7 @@ class Genre:
             raise InvalidGenreError("Описание жанра не может быть пустой строкой")
         return description.strip()
 
+    @staticmethod
     def check_genre_id(genre_id):
         if genre_id is None:
             raise InvalidGenreError("ID жанра не указан")

@@ -406,8 +406,13 @@ def remove_movie_from_watchlist(watchlists, user_id, movie_id):
 
 
 if __name__ == '__main__':
-    #users, movies, genres, payments, reviews, subscriptions, viewings, watchlists, watch_histories, collections = load_data_from_xml("test_data.xml")
+    #users, movies, genres, payments, reviews, subscriptions, viewings, watchlists, watch_histories, collections = load_data_from_xml("data.xml")
     users, movies, genres, payments, reviews, subscriptions, viewings, watchlists, watch_histories, collections = load_data_from_json("data.json")
     print(f"Загружено пользователей: {len(users)}")
     for user in users:
         print(user)
+
+    try:
+        user = User("Steve", "abc", 133)
+    except InvalidUserError as e:
+        print("Ошибка создания пользователя:", e)

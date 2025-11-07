@@ -2,6 +2,7 @@ from exceptions import InvalidReviewError
 
 class Review:
 
+    @staticmethod
     def check_review_user_id(user_id):
         if user_id is None:
             raise InvalidReviewError("ID пользователя не указан")
@@ -13,6 +14,7 @@ class Review:
             raise InvalidReviewError(f"ID пользователя должен быть положительным. Получено: {user_id}")
         return user_id
 
+    @staticmethod
     def check_review_movie_id(movie_id):
         if movie_id is None:
             raise InvalidReviewError("ID фильма не указан")
@@ -24,6 +26,7 @@ class Review:
             raise InvalidReviewError(f"ID фильма должен быть положительным. Получено: {movie_id}")
         return movie_id
 
+    @staticmethod
     def check_review_rating(rating):
         if rating is None:
             raise InvalidReviewError("Рейтинг не указан")

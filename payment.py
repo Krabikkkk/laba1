@@ -2,6 +2,7 @@ from exceptions import InvalidPaymentError
 
 class Payment:
 
+    @staticmethod
     def check_payment_amount(amount):
         if amount is None:
             raise InvalidPaymentError("Сумма платежа не указана")
@@ -13,6 +14,7 @@ class Payment:
             raise InvalidPaymentError(f"Сумма платежа должна быть положительной. Получено: {amount}")
         return amount
 
+    @staticmethod
     def check_payment_date(date):
         if date is None:
             raise InvalidPaymentError("Дата платежа не указана")
@@ -22,6 +24,7 @@ class Payment:
             raise InvalidPaymentError("Дата платежа не может быть пустой")
         return date.strip()
 
+    @staticmethod
     def check_payment_status(status):
         if status is None:
             raise InvalidPaymentError("Статус платежа не указан")
@@ -35,6 +38,7 @@ class Payment:
             )
         return status.strip().lower()
 
+    @staticmethod
     def check_ID(ID):
         if ID is None:
             raise InvalidPaymentError("Поле 'ID' не может быть пустым")
